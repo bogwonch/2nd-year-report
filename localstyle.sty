@@ -1,0 +1,53 @@
+\ProvidesPackage{localstyle}
+\usepackage{defaultstyle}
+\bibliographystyle{plain}
+
+\includepackage{acronym}
+\renewcommand{\acsfont}[1]{\MakeUppercase{#1}}
+\acrodef{av}{anti-virus}
+\acrodef{BYOD}{bring your own device}
+\acrodef{NIST}{US National Institute of Standards and Technology}
+\acrodef{SKB}{security knowledge base}
+
+\includepackage{algorithm2e}
+\SetKwComment{tcc}{\# }{}
+\SetKwComment{Anotate}{}{}
+\SetKwProg{Fn}{}{\string:}{}
+\SetKwProg{Block}{}{}{}
+\SetKwFor{For}{for}{\string:}{}
+\SetKwFor{ForAny}{$\exists$}{\string:}{}
+\SetKwFor{ForAll}{$\forall$}{\string:}{}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetKwSwitch{Match}{With}{Other}{match}{\string:}{with}{otherwise}{}{}
+\SetKwSwitch{Switch}{Case}{Other}{switch}{\string:}{case}{otherwise}{}{}
+\SetKwIF{If}{ElseIf}{Else}{if}{\string:}{else if}{else}{}
+\SetKwFor{Where}{where}{\string:}{}
+\SetKwFunction{Return}{return}
+
+\SetKwFunction{FEvaluate}{Evaluate}
+\SetKwFunction{FKnowsAbout}{Knows-About}
+\SetKwFunction{FGet}{Get}
+\SetKwFunction{FUpdate}{Update}
+\SetKwFunction{FCond}{Cond}
+\SetKwFunction{FCSCAA}{CanSay-or-CanActAs}
+\SetKwFunction{FCanSay}{CanSay}
+\SetKwFunction{FCanActAs}{CanActAs}
+\SetKwFunction{FResult}{new Result}
+\SetKwFunction{FProof}{new Proof}
+\SetKwFunction{FIsProof}{Is-A-Proof}
+\SetKwFunction{Goto}{Goto}
+\SetKwFunction{FUnify}{Unify}
+\SetKwFunction{FConsequent}{Consequent}
+\SetKwFunction{FSub}{Substitution}
+\SetKwFunction{FVars}{Variables}
+\SetKwFunction{FCheck}{Check-Antecedents-and-Constraint}
+\SetKwData{Va}{a}
+\SetKwData{Vc}{c}
+\SetKwData{Vta}{$\theta$a}
+\SetKwData{Vq}{q}
+\SetKwData{Vd}{d}
+\SetKwData{Vr}{r}
+\SetKwData{Vrt}{rt}
+\SetKwData{Vac}{ac}
+\SetKwData{Vp}{p}
+\SetKwData{Vu}{u}

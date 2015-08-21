@@ -1,0 +1,100 @@
+\ProvidesPackage{defaultstyle}
+
+% Use a package if it hasn't already been loaded
+\newcommand{\includepackage}[2][]{\@ifpackageloaded{#2}{}{\usepackage[#1]{#2}}}
+
+%% Math
+\includepackage{amsmath,amssymb}
+\includepackage{proof}
+
+%% Fonts
+\includepackage{lmodern}
+\includepackage{relsize}
+% \includepackage{fontspec}
+% \includepackage{unicode-math}
+
+% \includepackage{microtype}
+% \microtypesetup{%
+%   protrusion=true,
+%   expansion,
+%   letterspace=300
+% }
+
+%% Images
+\includepackage{graphicx}
+\setkeys{Gin}{%
+  width=\linewidth,
+  totalheight=\textheight,
+  keepaspectratio
+}
+
+%% Colors
+\includepackage[usenames,dvipsnames]{xcolor}
+
+%% Code
+\includepackage{listings}
+\lstset{%
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\ttfamily\slshape\footnotesize,
+  stringstyle=\sffamily\footnotesize,
+  columns=flexible,
+  tabsize=2,
+  showstringspaces=true,
+  %numbers=left,
+  breaklines=true,
+  numberstyle=\tiny\ttfamily\color{Gray},
+  commentstyle=\ttfamily\color{Gray}
+}
+\newcommand{\code}[2][]{\lstinline[breaklines=true, #1]{#2}}
+% Autoref line numebers
+\providecommand*{\lstnumberautorefname}{line}
+% SecPAL
+\lstdefinelanguage{apppal}{%
+  morekeywords={says,if,where,False,True},%
+  otherkeywords={=,0,inf,can-say,can-act-as},%
+  morestring=[b]"%
+}[keywords,comments,strings]
+\lstset{language=apppal}
+
+%% Et al.
+\newcommand{\etal}[0]{et~al{.}\@}
+
+%% Tables
+\includepackage{tabulary}
+\includepackage{booktabs}
+
+%% Figures
+\includepackage{subcaption}
+\includepackage{sidecap}
+\includepackage{caption}
+
+%% Links
+\includepackage{hyperref}
+\hypersetup{%
+  unicode=true,
+  hidelinks
+}
+
+\renewcommand*{\equationautorefname}{Equation}
+\renewcommand*{\footnoteautorefname}{footnote}
+\renewcommand*{\itemautorefname}{item}
+\renewcommand*{\figureautorefname}{Figure}
+\renewcommand*{\tableautorefname}{Table}
+\renewcommand*{\partautorefname}{Part}
+\renewcommand*{\appendixautorefname}{Appendix}
+\renewcommand*{\chapterautorefname}{Chapter}
+\renewcommand*{\sectionautorefname}{Section}
+\renewcommand*{\subsectionautorefname}{Subsection}
+\renewcommand*{\subsubsectionautorefname}{Subsubsection}
+\renewcommand*{\paragraphautorefname}{Paragraph}
+\renewcommand*{\subparagraphautorefname}{Subparagraph}
+\renewcommand*{\FancyVerbLineautorefname}{line}
+\renewcommand*{\theoremautorefname}{Theorem}
+\renewcommand*{\pageautorefname}{page}
+
+%% Bibliography
+\includepackage[square,numbers]{natbib}
+
+%% Dingbats
+\includepackage{pifont}
+\newcommand{\xmark}[0]{\ding{55}}
