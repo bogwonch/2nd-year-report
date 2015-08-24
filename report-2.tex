@@ -92,7 +92,7 @@ The \emph{straight} benchmark consists of a single long chain of delegation.
 The \emph{forking} benchmark consists of a binary tree of principals delegating to each other.
 These benchmarks are reasonable as they model the worst kinds of policies (though worse ones could of course be designed).
 
-Cn a Nexus 4 device checking times are measured in seconds when there are hundreds of delegations in a single policy check, and in minutes when there are thousands (\autoref{fig:benchmarks}).
+On a Nexus 4 device checking times are measured in seconds when there are hundreds of delegations in a single policy check, and in minutes when there are thousands (\autoref{fig:benchmarks}).
 When describing hypothetical real policies, I typically only have a few delegations, and not long delegation chains, so I believe the performance will is acceptable.
 I believe that the AppPAL constraints will be the slowest part of checking a policy.
 Since they can execute arbitrary programs or include network requests their performance is independent of AppPAL.
