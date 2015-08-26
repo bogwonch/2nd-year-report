@@ -2,7 +2,7 @@
 \usepackage{defaultstyle}
 \usepackage{localstyle}
 
-\title{Authorization Logic for App Policies}
+\title{Authorization Logic for Mobile Ecosystems}
 \subtitle{Second Year Report}
 \author{Joseph Hallett}
 \date\today
@@ -11,35 +11,62 @@
 \maketitle
 
 \begin{abstract}
-  This report describes second year work of my PhD.
-  I give a brief overview of the app installation policies and the AppPAL authorisation logic; before describing the work completed this year.
-  I review what topics suggested in the thesis proposal.
-  Work re-implementing AppPAL, exploring store and user policies and looking at protocols for app distribution is described.
-  I describe what I expect to work on in the final year of my studies.
-  Finally, I give a table of contents for the proposed thesis.
+  This report describes the second year work of my PhD.
+  I give a brief overview of app installation policies and the AppPAL authorisation logic; before describing the work completed this year.
+  I review topics suggested in the thesis proposal; and describe my work re-implementing AppPAL, exploring store and user policies and looking at protocols for app distribution.
+  I describe what I expect to work on in the final year of my studies; and, finally, I give a table of contents for the proposed thesis.
 \end{abstract}
 
 \section{Introduction}
 
-Mobile devices let users pick the apps they want to run.
-App stores offer a wide range of software for users to choose.
-Users pick particular apps for a variety of reasons:
-  ordering in the store~\citep{Prata:2012in},
-  reviews and privacy concerns~\citep{Kelley:2013kc},
-  and security rules from their employer.
+Mobile devices are different to other computers.
+They have access to greater personal data than a PC; pictures and photos as well as conversations, locations, and address books.
+They predominantly only run software sold through stores the manufacturer control.
+People take them to work and on holiday; into their homes and out into town or the countryside.
+These devices communicate through wireless technologies almost exclusively: working with cars via bluetooth, the internet via 3G, speakers TVs and other internet-of-things devices through wifi.
+These differences create a different ecosystem for these devices to operate in.
+
+The interaction between stores, device users, apps and phones gives rise to trust relationships between each of the principals.
+Users trust the stores to sell them malware free apps.
+Some stores will sell any apps, but others are more picky relying on audits and tools to find the higher quality apps to sell.
+In the stores users are told about the apps they might want to buy (\autoref{fig:storeinfo}):
+who developed it, whether they were a \emph{top developer}, what kind of app it is, age ratings, functionality the app may have, aggregated review scores, descriptions and bugs from both anonymous and not so anonymous users, update times, the price of in-app-purchases and the permissions it will request.
+How do the device owners know which information to trust?
+Where does the store get this information from in the first place?
+
+\begin{figure}\centering
+  \includegraphics[width=0.8\linewidth]{images/angrybirds.png}
+  \includegraphics[width=0.8\linewidth]{images/reviews.png}
+  \includegraphics[width=0.8\linewidth]{images/additionalinfo.png}
+  \caption{Some of the information presented to the user in the Play store.}
+  \label{fig:storeinfo}
+\end{figure}
 
 Finding the right apps can be tricky:
   users need to work out which apps are well written, which are not going to abuse their data, which ones will work in the way they want
   and to find the apps which suit how they want to use their device.
 This can be difficult as it isn't obvious how apps use the data each has access to.
+App stores offer a wide range of software for users to choose.
+Users pick particular apps for a variety of reasons:
+  ordering in the store~\citep{Prata:2012in},
+  reviews and privacy concerns~\citep{Kelley:2013kc},
+  and security rules from their employer.
+These policies could be written down and used to guide device owners when they are making a decision that goes against them.
 
-People fall into patterns when thinking about the privacy issues around apps~\citep{Sadeh:2014vq}.
-Companies have policies about how phones should be used by employees.
-With \emph{bring your own device} schemes employees use their personal devices for work.
-IT departments in these companies may need to create policies so that the devices can be used securely with company information.
-Ensuring compliance is often left to the employees.
+If an employer uses a \ac{BYOD} scheme at their company they may trust users to follow company IT policies when using their phones at work.
+Using tools like Google's \emph{Apps Device Policy}\footnote{\url{https://play.google.com/store/apps/details?id=com.google.android.apps.enterprise.dmagent}} the employer can restrict the use of specific apps.
+This is a very unsubtle form of usage control; it doesn't allow for rich policies using information from third parties or on the basis of metadata about the app; or for making any kind of decision other than to allow an app or not.
+For IT departments in these companies these kinds of tools are all they have to enforce their policies.
+For more advanced policies, such as not leaking company documents, compliance is often left to employees.
 
-These policies exist for mobile ecosystems; but there aren't ways of modelling them precisely or enforcing them.
+\begin{figure}[]
+  \centering
+  \includegraphics[width=0.8\linewidth]{images/ecosystem.eps}
+  \caption{The mobile ecosystem surrounding a phone used for \ac{BYOD} and the trust relationships surrounding it.}
+  \label{fig:ecosystem}
+\end{figure}
+
+Policies exist for mobile ecosystems; but there aren't ways of modelling them precisely or enforcing them.
 I believe that authorization logic can be used to describe these policies and enforce them automatically.
 Authorization logic's can describe the trust relationships and policies surrounding Android formally.
 This lets us to make precise statements about the security of these systems.
@@ -50,7 +77,6 @@ By capturing these patterns explicitly as policies they can be enforced automati
 By checking the policies we can enforce them at run-time; or warn users when making decisions that go against their policies.
 This reduces the burden on users to decide which apps they want.
 Security-savvy users may design policies themselves: these could be shared with others or used in organisation-wide curated app stores.
-
 
 This thesis research will show how authorization logic can be used to make security decisions in mobile devices.
 Security decisions must be made manually by smart phone users
@@ -76,12 +102,11 @@ Decisions can be delegated to other users; with separate versions where further 
 \begin{lstlisting}
 `user' says `it-department' can-say 0 `office-app-policy' isMetBy(App).
 \end{lstlisting}
-And principals can be given roles or subjects renamed.
+And principals; who might be users, developers, stores or other entities in the mobile ecosystem; can be given roles or subjects renamed.
 \begin{lstlisting}
 `user' says `ian' can-act-as `it-department'.
 \end{lstlisting}
 Statements are collected into an \emph{assertion context} which is queried using SecPAL's three evaluation rules~\citep{Becker:2006vh}.
-
 
 \section{Summary of second year work}
 
@@ -702,8 +727,8 @@ The paper will introduce the AppPAL language and its implementation.
 I give sanity checking benchmarks to show its performance is not unreasonable.
 Finally, I demonstrate AppPAL by presenting our work using AppPAL to filter user's privacy policies from our SOUPS poster, as part of a full paper.
 
-\newgeometry{left=0.01em,top=0.01em, right=0.01em, bottom=0.01em}
-\includepdf[pages=-]{../essos-2016-apppal/paper.pdf}
+% \newgeometry{left=0.01em,top=0.01em, right=0.01em, bottom=0.01em}
+% \includepdf[pages=-]{../essos-2016-apppal/paper.pdf}
 
 \end{document}
 
