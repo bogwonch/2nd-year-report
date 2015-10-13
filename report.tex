@@ -1,6 +1,7 @@
 \documentclass[a4paper]{scrartcl}
 \usepackage{defaultstyle}
 \usepackage{localstyle}
+\usepackage{microtype}
 
 \title{Authorization Logic for Mobile Ecosystems}
 \subtitle{Second Year Report}
@@ -704,7 +705,7 @@ On a memory constrained device, like a mobile phone, storing a database of all p
 There are almost 1.5 million apps available on the Google Play store not including other stores or multiple versions of the same app.
 Storing data on all apps will not work as the file size will be huge.
 In the papers on SecPAL~\citep{Becker:2006vh,Becker:2009vt} (on which AppPAL is based) there is little talk about how the knowledge should be distributed.
-\citeauthor*{Becker:2006vh} describe how principals should sign their AppPAL statements to identify themselves as having said them, and how an X.509-style public key system could be used to tie keys to principals.
+Becket~et~al{.} describe how principals should sign their AppPAL statements to identify themselves as having said them, and how an X.509-style public key system could be used to tie keys to principals.
 This tells us how to check the statements are not forged but does not give the distribution mechanisms.
 Related languages~\citep{Becker:2009ula,Aziz:2011vt,Gurevich:2008fz,Gurevich:Qo5E3M3} extended SecPAL features but still didn't specify the distribution protocol.
 SecPAL was built to be a distributed language with principals delegating statements.
